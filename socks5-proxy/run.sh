@@ -1,0 +1,25 @@
+#!/usr/bin/with-contenv bashio
+set -e
+
+PORT=$(bashio::config 'port')
+USERNAME=$(bashio::config 'username')
+PASSWORD=$(bashio::config 'password')
+LOG_TO_FILE=$(bashio::config 'log_to_file')
+
+ARGS="-host 0.0.0.0 -port ${PORT}"
+
+if [ -n "$USERNAME" ] && [ -n "$PASSWORD" ]; then
+    ARGS="${ARGS} -user ${USERNAME} -pass ${PASSWORD}"
+    bashio::log.info "Authentication enabled for user: ${USERNAME}"
+else
+    bashio::log.warning "No authentication configured - proxy is open to anyone on the network"
+fi
+
+if [ "$LOG_TO_FILE" = "true" ]; then
+    ARGS="${ARGS} -log /share/socks5-proxy.log"
+    bashio::log.info "Logging to /share/socks5-proxy.log"
+fi
+
+bashio::log.info "Starting SOCKS5 proxy on port ${PORT}"
+
+exec /usr/local/bin/socks5-proxy ${ARGS}

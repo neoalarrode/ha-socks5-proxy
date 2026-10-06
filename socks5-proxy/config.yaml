@@ -1,0 +1,31 @@
+name: SOCKS5 Proxy
+version: 1.0.0
+slug: socks5-proxy
+description: Turn your Home Assistant host into a SOCKS5 proxy server with optional authentication.
+url: https://github.com/neoalarrode/ha-socks5-proxy
+arch:
+  - aarch64
+  - amd64
+  - armhf
+  - armv7
+  - i386
+host_network: true
+ports:
+  1080/tcp: 1080
+ports_description:
+  1080/tcp: SOCKS5 proxy port
+map:
+  - share:rw
+options:
+  port: 1080
+  username: ""
+  password: ""
+  log_to_file: false
+schema:
+  port: port
+  username: str?
+  password: password?
+  log_to_file: bool
+startup: services
+boot: auto
+panel_icon: mdi:server-network

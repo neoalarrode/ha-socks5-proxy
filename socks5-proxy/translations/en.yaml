@@ -1,0 +1,13 @@
+configuration:
+  port:
+    name: Port
+    description: TCP port the SOCKS5 proxy listens on.
+  username:
+    name: Username
+    description: Username for proxy authentication. Leave empty to disable authentication.
+  password:
+    name: Password
+    description: Password for proxy authentication. Required when username is set.
+  log_to_file:
+    name: Log to file
+    description: Write connection logs to /share/socks5-proxy.log in addition to the add-on log.
