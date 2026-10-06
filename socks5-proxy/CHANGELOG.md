@@ -1,10 +1,14 @@
 # Changelog
 
+## 1.0.2
+
+- Fix: bypass s6-overlay entirely to avoid suexec PID 1 errors
+- Run proxy binary directly as container entrypoint
+- Read config with jq instead of bashio for maximum compatibility
+
 ## 1.0.1
 
 - Fix: use s6-overlay v3 service directory structure
-- Fix: "s6-overlay-suexec: fatal: can only run as pid 1" error
-- Remove unnecessary apk packages from image
 
 ## 1.0.0
 

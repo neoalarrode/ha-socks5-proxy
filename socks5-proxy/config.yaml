@@ -1,5 +1,5 @@
 name: SOCKS5 Proxy
-version: 1.0.1
+version: 1.0.2
 slug: socks5-proxy
 description: Turn your Home Assistant host into a SOCKS5 proxy server with optional authentication.
 url: https://github.com/neoalarrode/ha-socks5-proxy

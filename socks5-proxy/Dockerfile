@@ -9,6 +9,10 @@ RUN CGO_ENABLED=0 go build -ldflags="-s -w" -o socks5-proxy .
 
 FROM ${BUILD_FROM}
 
-COPY --from=builder /build/socks5-proxy /usr/local/bin/socks5-proxy
+RUN apk add --no-cache jq
 
-COPY rootfs /
+COPY --from=builder /build/socks5-proxy /usr/local/bin/socks5-proxy
+COPY run.sh /run.sh
+RUN chmod +x /run.sh
+
+ENTRYPOINT ["/run.sh"]
